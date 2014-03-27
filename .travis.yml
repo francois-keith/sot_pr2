@@ -1,7 +1,7 @@
 after_success:
 - git config --global user.name "Travis CI"
 - git config --global user.email "francois.keith@gmail.com"
-- git remote set-url origin https://thomas-moulard:${GH_TOKEN}@github.com/stack-of-tasks/redundant_manipulator_control.git
+- git remote set-url origin git://github.com/francois-keith/sot_pr2
 - git fetch origin gh-pages:gh-pages
 matrix:
   allow_failures:
@@ -9,16 +9,13 @@ matrix:
 language: cpp
 notifications:
   email:
-  - francois.keith@laas.fr
+  - francois.keith@gmail.com
 branches:
   only:
   - groovy
 before_install: ./.travis/before_install
 script: ./.travis/build
 after_success: ./.travis/after_success
-env:
-  global:
-    secure: VwaW/I3Sp1lxYf5s1cdqSo11jFa6BBuanjqbkfSLLAiZoSvXiXIb0bGAjWcOw5KYm2sxJfZCdsBsvI0z2P7yBE1NYP8hFHgKiglhi2grfRdhyBZAThbBKZZ41CU1xXoDeH0ZRC9eZHmVTwOZLe8RoBhE7v3gctu4wbmEh/4Miqk=
 compiler:
 - clang
 - gcc
