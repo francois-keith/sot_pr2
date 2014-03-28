@@ -1,21 +1,14 @@
-after_success:
-- git config --global user.name "Travis CI"
-- git config --global user.email "francois.keith@gmail.com"
-- git remote set-url origin git://github.com/francois-keith/sot_pr2
-- git fetch origin gh-pages:gh-pages
-matrix:
-  allow_failures:
-  - compiler: clang
 language: cpp
+compiler:
+- gcc
+matrix:
 notifications:
   email:
   - francois.keith@gmail.com
 branches:
   only:
+  - master
   - groovy
-before_install: ./.travis/before_install
 script: ./.travis/build
+before_install: ./.travis/before_install
 after_success: ./.travis/after_success
-compiler:
-- clang
-- gcc
