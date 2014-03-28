@@ -30,6 +30,7 @@ sudo apt-get install -qq	\
     liblapack-dev		\
     libblas-dev			\
     gfortran			\
+    libbullet-dev		\
     python-dev			\
     python-sphinx		\
     python-numpy
