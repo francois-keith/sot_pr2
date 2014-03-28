@@ -36,6 +36,7 @@ sudo apt-get install -qq	\
 
 
 sudo apt-get install -qq		\
+    ros-$ROS_VERSION-actionlib		\
     ros-$ROS_VERSION-ros-base		\
     ros-$ROS_VERSION-pr2-mechanism	\
     ros-$ROS_VERSION-control-msgs	\
