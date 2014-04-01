@@ -49,5 +49,9 @@ install_dependency stack-of-tasks/sot-dynamic
 install_dependency laas/jrl_dynamics_urdf
 
 cd "$root_dir"
-# only build dynamic_graph_bridge for now
+# build dependencies
+rosmake dynamic_graph_bridge_msgs
+rosmake dynamic_graph_bridge
+
+# build sot_pr2
 rosmake sot_pr2
