@@ -36,6 +36,15 @@ install_dependency()
     make install
 }
 
+install_ros_stack()
+{
+    echo "--> Compiling $1"
+    mkdir -p "$build_dir/$1"
+    cd "$build_dir"
+    $git_clone "git://github.com/$1" "$1"
+    export ROS_PACKAGE_PATH="$build_dir/$1:$ROS_PACKAGE_PATH"
+}
+
 # Retrieve jrl-mathtools
 install_dependency jrl-umi3218/jrl-mathtools
 install_dependency jrl-umi3218/jrl-mal
@@ -47,6 +56,7 @@ install_dependency stack-of-tasks/sot-core
 install_dependency stack-of-tasks/sot-tools
 install_dependency stack-of-tasks/sot-dynamic
 install_dependency laas/jrl_dynamics_urdf
+install_ros_stack stack-of-tasks/redundant_manipulator_control
 
 cd "$root_dir"
 # build dependencies
