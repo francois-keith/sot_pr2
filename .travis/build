@@ -41,7 +41,11 @@ install_ros_stack()
     echo "--> Compiling $1"
     mkdir -p "$build_dir/$1"
     cd "$build_dir"
-    $git_clone "git://github.com/$1" "$1"
+    if [ "$#" -eq "2" ]; then
+      $git_clone "git://github.com/$1" "$1" -b $2
+    else
+      $git_clone "git://github.com/$1" "$1"
+    fi
     export ROS_PACKAGE_PATH="$build_dir/$1:$ROS_PACKAGE_PATH"
 }
 
@@ -56,7 +60,7 @@ install_dependency stack-of-tasks/sot-core
 install_dependency stack-of-tasks/sot-tools
 install_dependency stack-of-tasks/sot-dynamic
 install_dependency laas/jrl_dynamics_urdf
-install_ros_stack stack-of-tasks/redundant_manipulator_control
+install_ros_stack stack-of-tasks/redundant_manipulator_control groovy
 
 cd "$root_dir"
 # build dependencies
