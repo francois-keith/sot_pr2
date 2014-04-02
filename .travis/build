@@ -66,6 +66,8 @@ cd "$root_dir"
 # build dependencies
 rosmake dynamic_graph_bridge_msgs
 rosmake dynamic_graph_bridge
+roscd dynamic_graph_bridge/build
+make install
 
 # build sot_pr2
 rosmake sot_pr2
