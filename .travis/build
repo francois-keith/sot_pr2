@@ -64,13 +64,25 @@ install_ros_stack stack-of-tasks/redundant_manipulator_control groovy
 
 cd "$root_dir"
 # build dependencies
+rosdep install dynamic_graph_bridge_msgs
 rosmake dynamic_graph_bridge_msgs
+
+rosdep install dynamic_graph_bridge
 rosmake dynamic_graph_bridge
 cd "$build_dir"
 cd stack-of-tasks/redundant_manipulator_control/dynamic_graph_bridge/build
+cmake .. -DCMAKE_INSTALL_PREFIX:STRING="$install_dir"
+rosmake dynamic_graph_bridge
 make install
 
-# build sot_pr2
+
+# rosmake and install sot_pr2
 cd "$root_dir"
+export ROS_PACKAGE_PATH="$root_dir:$ROS_PACKAGE_PATH"
+rosdep install sot_pr2
 rosmake sot_pr2
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX:STRING="$install_dir"
+rosmake sot_pr2
+make install
 
