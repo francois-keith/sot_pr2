@@ -67,9 +67,10 @@ cd "$root_dir"
 rosmake dynamic_graph_bridge_msgs
 rosmake dynamic_graph_bridge
 cd "$build_dir"
-cd redundant_manipulator_control/dynamic_graph_bridge/build
+cd stack-of-tasks/redundant_manipulator_control/dynamic_graph_bridge/build
 make install
 
 # build sot_pr2
 cd "$root_dir"
 rosmake sot_pr2
+
