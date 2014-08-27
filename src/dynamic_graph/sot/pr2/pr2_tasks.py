@@ -9,7 +9,7 @@ from dynamic_graph.sot.core.meta_tasks_kine import MetaTaskKine6d
 from dynamic_graph.sot.dyninv import TaskInequality, TaskJointLimits
 from dynamic_graph.sot.core.meta_task_visual_point import MetaTaskVisualPoint
 
-from dynamic_graph.sot.application.velocity.precomputed_tasks import Solver, createCenterOfMassFeatureAndTask, createOperationalPointFeatureAndTask, initializeSignals
+from dynamic_graph.sot.application.velocity.precomputed_tasks import Solver, createOperationalPointFeatureAndTask, initializeSignals
 
 
 # 
@@ -18,19 +18,11 @@ def initialize (robot, solverType=SOT):
     Initialize the solver, and define shortcuts for the operational points
     """
 
-    # TODO: this should disappear in the end.     
-    # --- center of mass ------------
-    (robot.featureCom, robot.featureComDes, robot.comTask) = \
-        createCenterOfMassFeatureAndTask(robot,
-        '{0}_feature_com'.format(robot.name),
-        '{0}_feature_ref_com'.format(robot.name),
-        '{0}_task_com'.format(robot.name))
-
     # --- operational points tasks -----
     robot.features = dict()
     robot.tasks = dict()
     for op in robot.OperationalPoints:
-        (robot.features[op], robot.tasks[op]) = \
+        (robot.features[op], robot.tasks[op], robot.gains[op]) = \
             createOperationalPointFeatureAndTask(robot,
             op, '{0}_feature_{1}'.format(robot.name, op),
             '{0}_task_{1}'.format(robot.name, op))
@@ -40,8 +32,6 @@ def initialize (robot, solverType=SOT):
         for i in w[1:]:
             memberName += i.capitalize()
         setattr(robot, memberName, robot.features[op])
-
-    initializeSignals (robot)
 
     # --- create solver --- #
     solver = Solver (robot, solverType)
