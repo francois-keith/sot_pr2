@@ -24,6 +24,7 @@ ADD_REQUIRED_DEPENDENCY("jrl-mal")
 ADD_REQUIRED_DEPENDENCY("dynamic-graph")
 ADD_REQUIRED_DEPENDENCY("dynamic-graph-python")
 ADD_REQUIRED_DEPENDENCY("sot-core")
+ADD_REQUIRED_DEPENDENCY("sot-application >= 1.0.0")
 ADD_REQUIRED_DEPENDENCY("jrl-dynamics-urdf >= 2.0.1-14")
 
 # This is required by the Python prologue.

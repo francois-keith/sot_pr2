@@ -21,6 +21,7 @@ def initialize (robot, solverType=SOT):
     # --- operational points tasks -----
     robot.features = dict()
     robot.tasks = dict()
+    robot.gains = dict()
     for op in robot.OperationalPoints:
         (robot.features[op], robot.tasks[op], robot.gains[op]) = \
             createOperationalPointFeatureAndTask(robot,
